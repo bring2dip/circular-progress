@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      
+       <meta charset="utf-8" />
+       <title>Layout</title>
+       <style>
+			*{
+				margin:0px;
+				padding:0px;
+				font-family:Arial;
+			}					
+			#container{
+				position:relative;
+				width:100%;				
+			}
+			
+			svg{				
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			
+	   </style>
+    </head>
+    <body>
+		<div id="container">
+			<svg id="svg">
+			</svg>
+		</div>
+		<script src="legendary-svg.js">	
+<script>
+  graph = new LegendarySvg();
+  graph.init("svg");
+  var Settings = {
+			title:{
+				"text":"Voltage",
+				"size":5,
+				"color":"#bbb"
+			},
+			"totalArcAngle":300,    
+			"radius": 33,    
+			"thickness":9,
+			"color":"rgb(0,0,0)", 
+			"progress":null,	
+			innerCircle:{
+				"radius":null,
+				"lineWidth":0,
+				"strokeColor":"rgba(200,200,200,0.9)",
+				"fillColor":"#2e2e2e",
+				"text":"270 V",
+				"textSize":7,
+				"textColor":"#096ed4"
+			},
+			//rangeSetting:{
+			ranges: [
+				{
+					
+					name:"range1",			
+					startValue: 0,
+					endValue: 270,
+					color: '#096ed4'
+				}/*,
+				
+				{
+					name:"range2",				
+					startValue: 190,
+					endValue: 270,
+					color: 'rgba(255,0,0,0.8)'
+				},
+				*/
+				
+						
+			]
+
+			//}
+
+			,
+			smoothness: function(key, rangeArray,transitionTime){
+					
+			},
+			label : {
+			"pointThickness":0.8,
+			"distance":8,
+			"textDistance":7,
+			"strokeColor":"#888",
+			"strokeWidth":0.5,
+			"textColor":"#777",
+			"pointColor":"#888",		
+			"textSize":4,
+			//"interval":100,
+			//"precision":2,
+			"num":10,
+			"startValue":0,
+			"endValue":300
+			}
+			};
+			graph.roundedProgress(Settings);
+</script>
+    </body>   
+</html>
