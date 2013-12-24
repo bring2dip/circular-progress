@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      
+       <meta charset="utf-8" />
+       <title>Layout</title>
+       <style>
+			*{
+				margin:0px;
+				padding:0px;
+				font-family:Arial;
+			}					
+			#container{
+				position:relative;
+				width:100%;				
+			}
+			
+			svg{				
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			
+	   </style>
+    </head>
+    <body>
+		<div id="container">
+			<svg id="svg">
+			</svg>
+		</div>
+		<script src="legendary-svg.js">			
+		</script>
+		<script>
+			
+graph = new LegendarySvg();
+graph.init("svg");
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+}
+
+function get_random_number(){
+	return Math.random()*100;
+}	
+
+function draw(){
+	graph.drawArc(200,200, 100,-150, 0, 10, getRandomColor());
+	
+	var animation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+	animation.setAttribute("attributeName","d");
+	animation.setAttribute("begin","0s");
+	animation.setAttribute("dur","1s");
+	animation.setAttribute("rotate","auto");
+	animation.setAttribute("repeatCount","infinite");
+	animation.setAttribute("fill","freeze");
+	graph.node.appendChild(animation);
+	
+	
+	//setInterval(function(){
+		var path = graph.makePath(200,200, 100,-150, get_random_number());
+		//graph.set("d",path);	
+		animation.setAttribute("to",path)		
+	//},2000);
+	
+	
+}					
+draw();	
+	
+//graph.multipleRoundedProgress(SettingsMultiple);
+		</script>
+    </body>   
+</html>
